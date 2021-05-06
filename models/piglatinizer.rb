@@ -1,26 +1,28 @@
 class PigLatinizer
 
-    attr_reader :text
+    attr_accessor :word
 
-    def initialize(text_input)
-        # binding.pry
-        @text = text_input
+    def piglatinize(words)
+        pig(words)
     end
 
-    def split_word
-        binding.pry
-        @split_text = text.split(" ")
-    end
+   
 
-    def translate
+    def pig(words)
+        
+        @split_text = words.split(" ")
         @split_text.collect do |text|
+            
             if text.match(/^[aeiou]/i)
-                "#{@text}way"
+               
+                  "#{text}way"
+               
             else
-                parts = @text.split(/([aeiou].*)/)
+                parts = text.split(/([aeiou].*)/)
+                
                 "#{parts[1]}#{parts[0]}ay"
             end
-        end
-    
+            end.join(" ")
+            
     end
 end
